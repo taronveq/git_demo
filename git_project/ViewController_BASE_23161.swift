@@ -22,11 +22,7 @@ class ViewController: UIViewController {
         print("gag")
         
         print("hi")
-<<<<<<< HEAD
-        print("Bye")
-=======
-        print("Hi")
->>>>>>> fbe39791e2fa8dd3ab9f8af5e8d2f95865a25ce5
+        print("Hello")
     }
 
 
