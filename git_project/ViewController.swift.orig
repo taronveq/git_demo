@@ -15,12 +15,12 @@ class ViewController: UIViewController {
         print("bug fix bchange")
         print("bug fix achange")
 <<<<<<< HEAD
+        print("Malkhasyan")
+=======
         print("bug fix dchange")
     
-        print("Hovo")
-=======
-        print("Malkhasyan")
->>>>>>> newGit
+        print("Gago")
+>>>>>>> newbranch
         print ("123")
         print("gag")
         
