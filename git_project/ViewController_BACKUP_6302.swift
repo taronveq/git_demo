@@ -12,8 +12,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         print("bug fix bchange")
+=======
         print("bug fix achange")
+>>>>>>> bug_fix
     }
 
 
