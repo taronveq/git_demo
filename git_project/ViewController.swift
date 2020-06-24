@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         print("bug fix bchange")
         print("bug fix achange")
         print("Hovo")
+        print ("123")
         print("gag")
     }
 
