@@ -17,9 +17,10 @@ class ViewController: UIViewController {
         print("bug fix dchange")
     
         print("Hovo")
+        print ("123")
         print("gag")
         
-        print("hello world")
+        print("hi")
     }
 
 
