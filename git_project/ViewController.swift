@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         print("bug fix bchange")
         print("bug fix achange")
-    
+        print("Hovo")
         print("gag")
     }
 
