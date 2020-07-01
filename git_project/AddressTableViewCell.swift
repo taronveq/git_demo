@@ -16,7 +16,7 @@ class AddressTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func setAddress(_ address: String) {
-        addressLabel.text = address
+    func setAddress(_ address: AddressModel) {
+        addressLabel.text = address.street
     }
 }

@@ -6,10 +6,14 @@
 //  Copyright © 2020 MacBook Pro. All rights reserved.
 //
 import UIKit
+import Alamofire
+
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var addressesArray = [AddressModel]()
     
     var array = [String]()
     
@@ -21,109 +25,111 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableViewDelagates()
         doRequest()
-        
     }
 
-    
     private func tableViewDelagates() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
     private func doRequest() {
-        
-        // 1 Step
+//        let addr = AddressReqModel(title: "", description: "")
+//        addr.dictionary
         guard let url = URL(string: baseUrl + addressAll) else {
             return
         }
         
-        // 2 Step
-        var request = URLRequest(url: url)
+        let alamofireSessionManager = Alamofire.Session.default
         
-        // 3 Step
-        request.httpMethod = "GET"
-        
-        // 4 Step
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZDNlZWYwMC04ZWJkLTRjYmEtOGI1ZS0yODBhOTA2YjAxYjIiLCJ1bmlxdWVfbmFtZSI6IiszNzQ5NDE3MjgzOSIsImp0aSI6IjFlNTBkZTVmLTdiMDAtNGEwYS1iYjc5LTVlM2YyOGNmYjJmOCIsImlhdCI6MTU5MzE1NTQ0MiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsIm5iZiI6MTU5MzE1NTQ0MiwiZXhwIjoxNjAxNzk1NDQyLCJpc3MiOiJ3ZWJBcGkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDIvIn0.Ppl7oRQ1UEzor61KQW8tJAANX2Pf7dnbu0J18hZhd4I", forHTTPHeaderField: "Authorization")
-        
-        
-        // 5 Step
-        //        let parameters: [String: Any] = [
-        //            "city": "Gyumri",
-        //            "street": "Paruyr Sevak",
-        //            "entrance": 10
-        //        ]
-        //        do {
-        //            let data = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        //            request.httpBody = data
-        
-        
-        // 6 Step
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        alamofireSessionManager.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: getHeaders()).responseJSON { (response) in
             
-            // 8 Step Error Handle
-            guard let d = data, let r = response as? HTTPURLResponse, error == nil else {
-                print("Something went wrong")
-                return
-            }
-            // 9 Step Check Status
-            if r.statusCode >= 200 && r.statusCode <= 399 {
-                
-                // 10 Step Parse to dictionary
+            switch response.result {
+            case .success(let value):
                 do {
-                    guard let dict = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any] else { return }
-                    print(dict)
-                    
-                    guard let data = dict["data"] as? [String: Any],  let addresses = data["addresses"] as? [[String: Any]] else { return }
-                    for value in addresses {
-                        if let address = value["street"] as? String {
-                            self.array.append(address)
-                        }
-                    }
-                    DispatchQueue.main.async {
+                    let jsonData = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
+
+                    let responseData = try JSONDecoder().decode(ResponseModel.self, from: jsonData)
+
+                    if responseData.success {
+                        self.addressesArray = responseData.data.addresses
                         self.tableView.reloadData()
+                        return
                     }
-                    
-                    
+//                    completion(.failure(responseData.message))
+
                 } catch {
-                    print(error)
+//                    completion(.failure(error.localizedDescription))
+                    debugPrint("Error parsing response data to JSON: \(error)")
                 }
-                
-            } else {
-                print(r.statusCode, "Bye")
+            case .failure(let error):
+                if let statusCode = response.response?.statusCode {
+//                    logOutIfNeeded(statusCode: statusCode)
+                    return
+                }
+
+//                completion(.failure("Server error"))
+                debugPrint(error.localizedDescription)
             }
-            
-            
-            
         }
-        
-        // 7 Step
-        task.resume()
-        
-        //        } catch {
-        //            print(error.localizedDescription)
-        //        }
-        
     }
     
-    //    func x() throws -> Int {
-//        return 10
-//    }
-
+    func getHeaders() -> HTTPHeaders {
+        return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZDNlZWYwMC04ZWJkLTRjYmEtOGI1ZS0yODBhOTA2YjAxYjIiLCJ1bmlxdWVfbmFtZSI6IiszNzQ5NDE3MjgzOSIsImp0aSI6IjlhZTJiYTc3LWJmYTctNDM4YS1hNzNkLWI1OGU0MDBkZjUyZCIsImlhdCI6MTU5MzU4ODcxNiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsIm5iZiI6MTU5MzU4ODcxNSwiZXhwIjoxNjAyMjI4NzE1LCJpc3MiOiJ3ZWJBcGkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDIvIn0.LYm2DVIZTdnu7IhR-QKd1yS8-lNSK4IF1uSh1QphmB"]
+    }
+    
 }
 
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return addressesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
-        cell.setAddress(array[indexPath.row])
+        cell.setAddress(addressesArray[indexPath.row])
         return cell
     }
     
     
+}
+
+
+struct ResponseModel: Codable {
+    let success: Bool
+//    let message: [MessageModel]
+    let data: DataModel
+}
+
+
+struct MessageModel: Codable {
+    let key: Int
+    let value: String
+}
+
+struct DataModel: Codable {
+    let addresses: [AddressModel]
+}
+
+struct AddressModel: Codable {
+    let addressId: Int
+    let appartment: Int?
+    let buliding: String?
+    let city, commentToDriver: String?
+    let entrance, floor: Int?
+    let phoneNumber, street: String?
+    let isDefault: Bool?
+}
+
+
+struct AddressReqModel: Codable {
+    let title: String
+    let description: String
+}
+
+extension Encodable {
+  var dictionary: [String: Any]? {
+    guard let data = try? JSONEncoder().encode(self) else { return nil }
+    return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
+  }
 }
