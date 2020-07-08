@@ -15,6 +15,10 @@
 		524ED1D724A0863A00B5F9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524ED1D624A0863A00B5F9A2 /* Assets.xcassets */; };
 		524ED1DA24A0863A00B5F9A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524ED1D824A0863A00B5F9A2 /* LaunchScreen.storyboard */; };
 		52A1F44B24B38FEA00382B0F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F44A24B38FEA00382B0F /* TableViewCell.swift */; };
+		52A1F44D24B6238700382B0F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F44C24B6238700382B0F /* Models.swift */; };
+		52A1F44F24B623CB00382B0F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F44E24B623CB00382B0F /* Header.swift */; };
+		52A1F45124B6245700382B0F /* EnvirementUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F45024B6245700382B0F /* EnvirementUrl.swift */; };
+		52A1F45424B6257100382B0F /* APIClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F45324B6257100382B0F /* APIClientService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		524ED1D924A0863A00B5F9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		524ED1DB24A0863A00B5F9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A1F44A24B38FEA00382B0F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		52A1F44C24B6238700382B0F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		52A1F44E24B623CB00382B0F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		52A1F45024B6245700382B0F /* EnvirementUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvirementUrl.swift; sourceTree = "<group>"; };
+		52A1F45324B6257100382B0F /* APIClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientService.swift; sourceTree = "<group>"; };
 		7D6BE807A0777B602114CF0C /* Pods-git_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git_project.release.xcconfig"; path = "Target Support Files/Pods-git_project/Pods-git_project.release.xcconfig"; sourceTree = "<group>"; };
 		D0A9FF4A4C56D7A9B9A86DB2 /* Pods-git_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git_project.debug.xcconfig"; path = "Target Support Files/Pods-git_project/Pods-git_project.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +81,7 @@
 		524ED1CC24A0863500B5F9A2 /* git_project */ = {
 			isa = PBXGroup;
 			children = (
+				52A1F45224B6253000382B0F /* Networking */,
 				524ED1CD24A0863500B5F9A2 /* AppDelegate.swift */,
 				524ED1CF24A0863500B5F9A2 /* SceneDelegate.swift */,
 				524ED1D124A0863500B5F9A2 /* ViewController.swift */,
@@ -83,6 +92,17 @@
 				52A1F44A24B38FEA00382B0F /* TableViewCell.swift */,
 			);
 			path = git_project;
+			sourceTree = "<group>";
+		};
+		52A1F45224B6253000382B0F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				52A1F44C24B6238700382B0F /* Models.swift */,
+				52A1F44E24B623CB00382B0F /* Header.swift */,
+				52A1F45024B6245700382B0F /* EnvirementUrl.swift */,
+				52A1F45324B6257100382B0F /* APIClientService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		73576D8F03DD7E4CEE49259B /* Pods */ = {
@@ -212,7 +232,11 @@
 				524ED1D224A0863500B5F9A2 /* ViewController.swift in Sources */,
 				52A1F44B24B38FEA00382B0F /* TableViewCell.swift in Sources */,
 				524ED1CE24A0863500B5F9A2 /* AppDelegate.swift in Sources */,
+				52A1F45424B6257100382B0F /* APIClientService.swift in Sources */,
+				52A1F45124B6245700382B0F /* EnvirementUrl.swift in Sources */,
 				524ED1D024A0863500B5F9A2 /* SceneDelegate.swift in Sources */,
+				52A1F44F24B623CB00382B0F /* Header.swift in Sources */,
+				52A1F44D24B6238700382B0F /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

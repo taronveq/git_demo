@@ -11,14 +11,26 @@ import Alamofire
 
 class ViewController: UIViewController{
     
-    var array = [Address]()
-    let manager = Alamofire.Session.default
+    let getAllEndPoint = "Address/GetAll"
+    let getReciepeEndPoint = "Recipes/GetRecipeCategorys"
+    let getSimilarReciepeEndPoint = "Recipes/GetSimilarRecipes"
+
+    
+    var array = [ReciepeModel]()
+    
+    var similarArray = [Reciepe]()
+    
+    var addressesArray = [Address]()
+    
 
     @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeRequest()
+//        makeRequest()
         delegates()
+        makeAnotherRequest()
+        makeRequest()
+        getSimilarRequest()
     }
     
     private func delegates() {
@@ -26,71 +38,62 @@ class ViewController: UIViewController{
         table.dataSource = self
     }
     
-    func getHeaders() -> HTTPHeaders {
-        return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZDNlZWYwMC04ZWJkLTRjYmEtOGI1ZS0yODBhOTA2YjAxYjIiLCJ1bmlxdWVfbmFtZSI6IiszNzQ5NDE3MjgzOSIsImp0aSI6ImIyNGQ4ZmNmLTZmNmMtNGMyNi1hNGE1LWEwNDRhYTg1ZThlNCIsImlhdCI6MTU5NDA0ODgyMSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsIm5iZiI6MTU5NDA0ODgyMCwiZXhwIjoxNjAyNjg4ODIwLCJpc3MiOiJ3ZWJBcGkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDIvIn0.BVj87MQ0IPYfIHOBTQNz2GtBM0zRo9lQ0mhrBjNlXbE"]
-    }
-    
     func makeRequest() {
-        let url = "https://citystaging.abmdemo.me/api/Address/GetAll"
-        manager.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: getHeaders()).responseJSON { (response) in
-                    
-                    switch response.result {
-                    case .success(let value):
-                        print(value)
-                        do {
-                        let jsonData = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
-                            let responseData = try JSONDecoder().decode(DataModel.self, from: jsonData)
-                            self.array = responseData.data.addresses
-                            self.table.reloadData()
-                        } catch {
-                            print(error)
-                        }
-                    case .failure(let error):
-                        debugPrint(error.localizedDescription)
-                    }
-
+        APIClientService.makeRequest(urlEndPoint: getAllEndPoint) { (resp: AddressModel) in
+            print(resp)
+            self.addressesArray = resp.addresses
+            self.table.reloadData()
         }
     }
-
+    
+    
+    func makeAnotherRequest() {
+        APIClientService.makeRequest(urlEndPoint: getReciepeEndPoint) { (resp: [ReciepeModel]) in
+            self.array = resp
+            self.table.reloadData()
+        }
+    }
+    
+    func getSimilarRequest() {
+        APIClientService.makeRequest(urlEndPoint: getSimilarReciepeEndPoint + "?recipeId=1") { (resp: ReciepesModel) in
+            self.similarArray = resp.recipes
+            self.table.reloadData()
+        }
+    }
 
 }
 
 extension ViewController : UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        if section == 0 {
+            return array.count
+        } else if section == 1 {
+            return addressesArray.count
+        } else {
+            return similarArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        cell.titleLbl.text = array[indexPath.row].city
-        cell.valueLbl.text = array[indexPath.row].phoneNumber
+        if indexPath.section == 0 {
+            cell.titleLbl.text = String(array[indexPath.row].id)
+            cell.valueLbl.text = array[indexPath.row].name
+        } else if indexPath.section == 1 {
+            cell.titleLbl.text = addressesArray[indexPath.row].city
+            cell.valueLbl.text = addressesArray[indexPath.row].phoneNumber
+        } else {
+            cell.titleLbl.text = String(similarArray[indexPath.row].id)
+            cell.valueLbl.text = similarArray[indexPath.row].name
+        }
         return cell
     }
-}
-
-
-
-
-
-
-struct DataModel:Codable {
-    let success: Bool
-    let messages: [MessageModel]
-    let data: AddressModel
-}
-
-struct MessageModel:Codable {
-    let key: Int
-    let value: String
-}
-struct  AddressModel:Codable {
-    let addresses: [Address]
-}
-struct Address: Codable {
-    let addressId: Int
-    let city, street, buliding: String?
-    let entrance, floor, appartment: Int?
-    let phoneNumber, commentToDriver: String?
-    let isDefault: Bool
-    
 }
