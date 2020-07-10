@@ -7,4 +7,4 @@
 //
 
 import Foundation
-let baseUrl = "https://citystaging.abmdemo.me/api/"
+let baseUrl = "https://cityshopapi.abmdemo.me/api/"

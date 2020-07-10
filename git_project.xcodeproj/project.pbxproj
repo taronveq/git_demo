@@ -19,6 +19,8 @@
 		52A1F44F24B623CB00382B0F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F44E24B623CB00382B0F /* Header.swift */; };
 		52A1F45124B6245700382B0F /* EnvirementUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F45024B6245700382B0F /* EnvirementUrl.swift */; };
 		52A1F45424B6257100382B0F /* APIClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F45324B6257100382B0F /* APIClientService.swift */; };
+		52A1F45924B8C47D00382B0F /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F45824B8C47D00382B0F /* MyAccountViewController.swift */; };
+		52A1F45B24B8C48D00382B0F /* MyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A1F45A24B8C48D00382B0F /* MyAccount.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		52A1F44E24B623CB00382B0F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		52A1F45024B6245700382B0F /* EnvirementUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvirementUrl.swift; sourceTree = "<group>"; };
 		52A1F45324B6257100382B0F /* APIClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientService.swift; sourceTree = "<group>"; };
+		52A1F45824B8C47D00382B0F /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		52A1F45A24B8C48D00382B0F /* MyAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyAccount.storyboard; sourceTree = "<group>"; };
 		7D6BE807A0777B602114CF0C /* Pods-git_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git_project.release.xcconfig"; path = "Target Support Files/Pods-git_project/Pods-git_project.release.xcconfig"; sourceTree = "<group>"; };
 		D0A9FF4A4C56D7A9B9A86DB2 /* Pods-git_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git_project.debug.xcconfig"; path = "Target Support Files/Pods-git_project/Pods-git_project.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,11 +85,10 @@
 		524ED1CC24A0863500B5F9A2 /* git_project */ = {
 			isa = PBXGroup;
 			children = (
+				52A1F45524B8C44200382B0F /* ViewControllers */,
 				52A1F45224B6253000382B0F /* Networking */,
 				524ED1CD24A0863500B5F9A2 /* AppDelegate.swift */,
 				524ED1CF24A0863500B5F9A2 /* SceneDelegate.swift */,
-				524ED1D124A0863500B5F9A2 /* ViewController.swift */,
-				524ED1D324A0863500B5F9A2 /* Main.storyboard */,
 				524ED1D624A0863A00B5F9A2 /* Assets.xcassets */,
 				524ED1D824A0863A00B5F9A2 /* LaunchScreen.storyboard */,
 				524ED1DB24A0863A00B5F9A2 /* Info.plist */,
@@ -103,6 +106,33 @@
 				52A1F45324B6257100382B0F /* APIClientService.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		52A1F45524B8C44200382B0F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				52A1F45724B8C45D00382B0F /* MyAccount */,
+				52A1F45624B8C45400382B0F /* Main */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		52A1F45624B8C45400382B0F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				524ED1D124A0863500B5F9A2 /* ViewController.swift */,
+				524ED1D324A0863500B5F9A2 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		52A1F45724B8C45D00382B0F /* MyAccount */ = {
+			isa = PBXGroup;
+			children = (
+				52A1F45824B8C47D00382B0F /* MyAccountViewController.swift */,
+				52A1F45A24B8C48D00382B0F /* MyAccount.storyboard */,
+			);
+			path = MyAccount;
 			sourceTree = "<group>";
 		};
 		73576D8F03DD7E4CEE49259B /* Pods */ = {
@@ -176,6 +206,7 @@
 			files = (
 				524ED1DA24A0863A00B5F9A2 /* LaunchScreen.storyboard in Resources */,
 				524ED1D724A0863A00B5F9A2 /* Assets.xcassets in Resources */,
+				52A1F45B24B8C48D00382B0F /* MyAccount.storyboard in Resources */,
 				524ED1D524A0863500B5F9A2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +268,7 @@
 				524ED1D024A0863500B5F9A2 /* SceneDelegate.swift in Sources */,
 				52A1F44F24B623CB00382B0F /* Header.swift in Sources */,
 				52A1F44D24B6238700382B0F /* Models.swift in Sources */,
+				52A1F45924B8C47D00382B0F /* MyAccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

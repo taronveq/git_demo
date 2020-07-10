@@ -56,3 +56,15 @@ struct Reciepe: Codable {
         case categoryName
     }
 }
+
+struct MyAccountDetail: Codable {
+    let id: String
+    let name: String
+    let email: String
+    let surname: String
+    let address: Address
+    let photo: String?
+    let role: String
+    let phone: String
+    let birthDate: String
+}

@@ -14,6 +14,7 @@ class ViewController: UIViewController{
     let getAllEndPoint = "Address/GetAll"
     let getReciepeEndPoint = "Recipes/GetRecipeCategorys"
     let getSimilarReciepeEndPoint = "Recipes/GetSimilarRecipes"
+    let getMyAccountEndPoint = "Account/Get"
 
     
     var array = [ReciepeModel]()
@@ -31,6 +32,7 @@ class ViewController: UIViewController{
         makeAnotherRequest()
         makeRequest()
         getSimilarRequest()
+        getMyAccount()
     }
     
     private func delegates() {
@@ -58,6 +60,12 @@ class ViewController: UIViewController{
         APIClientService.makeRequest(urlEndPoint: getSimilarReciepeEndPoint + "?recipeId=1") { (resp: ReciepesModel) in
             self.similarArray = resp.recipes
             self.table.reloadData()
+        }
+    }
+    
+    func getMyAccount() {
+        APIClientService.makeRequest(urlEndPoint: getMyAccountEndPoint) { (resp: MyAccountDetail) in
+            print(resp)
         }
     }
 
@@ -96,4 +104,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
+    
+    
 }
