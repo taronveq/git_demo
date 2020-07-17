@@ -14,9 +14,14 @@ class APIClientService {
     
     static let manager = Alamofire.Session.default
     
-    class func makeRequest<T: Codable>(urlEndPoint: String, params: Parameters? = nil, encoding: JSONEncoding = JSONEncoding.default, completion: @escaping (T) -> Void) {
+    class func makeRequest<T: Codable>(urlEndPoint: String,
+                                       method: HTTPMethod = .get,
+                                       params: Parameters? = nil,
+                                       encoding: JSONEncoding = JSONEncoding.default,
+                                       completion: @escaping (T) -> Void) {
+        
         let url = baseUrl + urlEndPoint
-        manager.request(url, method: .get, parameters: params, encoding: encoding, headers: Header.getHeaders()).responseJSON { (response) in
+        manager.request(url, method: method, parameters: params, encoding: encoding, headers: Header.getHeaders()).responseJSON { (response) in
 
             switch response.result {
             case .success(let value):
@@ -35,7 +40,7 @@ class APIClientService {
             }
             
         }
-        print("Function end")
+        
     }
     
 }

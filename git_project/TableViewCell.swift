@@ -14,13 +14,10 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var valueLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func setData(model: ReciepeModel) {
+        titleLbl.text = String(model.id)
+        valueLbl.text = model.name
     }
-
 }

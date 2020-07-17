@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bBv-9B-ycX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bBv-9B-ycX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -18,12 +18,38 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Do7-wg-tte">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="X9q-12-fNG">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZEu-xC-2G6">
+                                            <rect key="frame" x="20" y="22" width="374" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address book" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfC-o5-KHr">
+                                            <rect key="frame" x="20" y="87" width="374" height="25"/>
+                                            <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstItem="zfC-o5-KHr" firstAttribute="top" secondItem="ZEu-xC-2G6" secondAttribute="bottom" constant="31" id="2jc-xT-MnC"/>
+                                        <constraint firstItem="zfC-o5-KHr" firstAttribute="trailing" secondItem="ZEu-xC-2G6" secondAttribute="trailing" id="KMx-pv-Zah"/>
+                                        <constraint firstItem="zfC-o5-KHr" firstAttribute="leading" secondItem="ZEu-xC-2G6" secondAttribute="leading" id="Q7e-s6-hWy"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZEu-xC-2G6" secondAttribute="trailing" constant="20" id="Ruw-aW-BKl"/>
+                                        <constraint firstItem="ZEu-xC-2G6" firstAttribute="top" secondItem="X9q-12-fNG" secondAttribute="top" constant="22" id="ZG3-1W-lAq"/>
+                                        <constraint firstItem="ZEu-xC-2G6" firstAttribute="leading" secondItem="X9q-12-fNG" secondAttribute="leading" constant="20" id="cEz-Vq-bIy"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="7Ng-w3-zyY" customClass="TableViewCell" customModule="git_project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="91" id="7Ng-w3-zyY" customClass="TableViewCell" customModule="git_project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="144" width="414" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Ng-w3-zyY" id="VJB-C1-yA6">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIv-rp-VDQ">
@@ -40,11 +66,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="UVR-2U-CpS" firstAttribute="trailing" secondItem="VJB-C1-yA6" secondAttribute="trailingMargin" id="0uJ-r1-rNw"/>
-                                                <constraint firstItem="UVR-2U-CpS" firstAttribute="top" secondItem="VJB-C1-yA6" secondAttribute="topMargin" id="FH1-Pl-Brk"/>
+                                                <constraint firstItem="UVR-2U-CpS" firstAttribute="centerY" relation="greaterThanOrEqual" secondItem="YIv-rp-VDQ" secondAttribute="centerY" id="DWy-P0-t7m"/>
                                                 <constraint firstItem="YIv-rp-VDQ" firstAttribute="top" secondItem="VJB-C1-yA6" secondAttribute="topMargin" id="Jzi-6G-MPt"/>
+                                                <constraint firstItem="UVR-2U-CpS" firstAttribute="trailing" secondItem="VJB-C1-yA6" secondAttribute="trailingMargin" id="ZU7-d1-pfb"/>
                                                 <constraint firstItem="YIv-rp-VDQ" firstAttribute="leading" secondItem="VJB-C1-yA6" secondAttribute="leadingMargin" id="euK-jd-rLQ"/>
-                                                <constraint firstItem="UVR-2U-CpS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YIv-rp-VDQ" secondAttribute="trailing" constant="12" id="pkW-TX-NlC"/>
+                                                <constraint firstItem="UVR-2U-CpS" firstAttribute="top" secondItem="VJB-C1-yA6" secondAttribute="topMargin" id="s8A-Sx-6f7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -66,6 +92,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="mlT-Jg-G0x"/>
                     <connections>
+                        <outlet property="addressLabel" destination="zfC-o5-KHr" id="B5L-il-sIT"/>
+                        <outlet property="searchTxtField" destination="ZEu-xC-2G6" id="j83-ZI-IK0"/>
                         <outlet property="table" destination="Do7-wg-tte" id="6Uw-i3-u88"/>
                     </connections>
                 </viewController>
