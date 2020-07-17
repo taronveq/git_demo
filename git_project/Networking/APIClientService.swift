@@ -14,12 +14,16 @@ class APIClientService {
     
     static let manager = Alamofire.Session.default
     
+<<<<<<< HEAD
     class func makeRequest<T: Codable>(urlEndPoint: String,
                                        method: HTTPMethod = .get,
                                        params: Parameters? = nil,
                                        encoding: JSONEncoding = JSONEncoding.default,
                                        completion: @escaping (T) -> Void) {
         
+=======
+    class func makeRequest<T: Codable>(urlEndPoint: String, method: HTTPMethod = .get, params: Parameters? = nil, encoding: JSONEncoding = JSONEncoding.default, completion: @escaping (T) -> Void) {
+>>>>>>> 5c5b2183cef9cabfa9621548a8abe6a6c98fcaaf
         let url = baseUrl + urlEndPoint
         manager.request(url, method: method, parameters: params, encoding: encoding, headers: Header.getHeaders()).responseJSON { (response) in
 

@@ -12,6 +12,9 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var valueLbl: UILabel!
+    @IBOutlet weak var apartmentlbl: UILabel!
+    @IBOutlet weak var streetlbl: UILabel!
+    @IBOutlet weak var phonelbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
