@@ -21,6 +21,9 @@
 		52A1F45424B6257100382B0F /* APIClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F45324B6257100382B0F /* APIClientService.swift */; };
 		52A1F45924B8C47D00382B0F /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1F45824B8C47D00382B0F /* MyAccountViewController.swift */; };
 		52A1F45B24B8C48D00382B0F /* MyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A1F45A24B8C48D00382B0F /* MyAccount.storyboard */; };
+		8613C64A24B8CB7200728907 /* CreateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613C64924B8CB7200728907 /* CreateAddressViewController.swift */; };
+		8613C64C24B8CB8200728907 /* CreateAddress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8613C64B24B8CB8200728907 /* CreateAddress.storyboard */; };
+		8693249224BF6AEF0085A677 /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693249124BF6AEF0085A677 /* EditAccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		52A1F45824B8C47D00382B0F /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		52A1F45A24B8C48D00382B0F /* MyAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyAccount.storyboard; sourceTree = "<group>"; };
 		7D6BE807A0777B602114CF0C /* Pods-git_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git_project.release.xcconfig"; path = "Target Support Files/Pods-git_project/Pods-git_project.release.xcconfig"; sourceTree = "<group>"; };
+		8613C64924B8CB7200728907 /* CreateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAddressViewController.swift; sourceTree = "<group>"; };
+		8613C64B24B8CB8200728907 /* CreateAddress.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAddress.storyboard; sourceTree = "<group>"; };
+		8693249124BF6AEF0085A677 /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		D0A9FF4A4C56D7A9B9A86DB2 /* Pods-git_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git_project.debug.xcconfig"; path = "Target Support Files/Pods-git_project/Pods-git_project.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +117,7 @@
 		52A1F45524B8C44200382B0F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8613C64424B8CB3700728907 /* Address */,
 				52A1F45724B8C45D00382B0F /* MyAccount */,
 				52A1F45624B8C45400382B0F /* Main */,
 			);
@@ -131,6 +138,7 @@
 			children = (
 				52A1F45824B8C47D00382B0F /* MyAccountViewController.swift */,
 				52A1F45A24B8C48D00382B0F /* MyAccount.storyboard */,
+				8693249124BF6AEF0085A677 /* EditAccountViewController.swift */,
 			);
 			path = MyAccount;
 			sourceTree = "<group>";
@@ -142,6 +150,15 @@
 				7D6BE807A0777B602114CF0C /* Pods-git_project.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8613C64424B8CB3700728907 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				8613C64924B8CB7200728907 /* CreateAddressViewController.swift */,
+				8613C64B24B8CB8200728907 /* CreateAddress.storyboard */,
+			);
+			path = Address;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +195,7 @@
 				TargetAttributes = {
 					524ED1C924A0863500B5F9A2 = {
 						CreatedOnToolsVersion = 11.4.1;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -208,6 +226,7 @@
 				524ED1D724A0863A00B5F9A2 /* Assets.xcassets in Resources */,
 				52A1F45B24B8C48D00382B0F /* MyAccount.storyboard in Resources */,
 				524ED1D524A0863500B5F9A2 /* Main.storyboard in Resources */,
+				8613C64C24B8CB8200728907 /* CreateAddress.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +284,12 @@
 				524ED1CE24A0863500B5F9A2 /* AppDelegate.swift in Sources */,
 				52A1F45424B6257100382B0F /* APIClientService.swift in Sources */,
 				52A1F45124B6245700382B0F /* EnvirementUrl.swift in Sources */,
+				8693249224BF6AEF0085A677 /* EditAccountViewController.swift in Sources */,
 				524ED1D024A0863500B5F9A2 /* SceneDelegate.swift in Sources */,
 				52A1F44F24B623CB00382B0F /* Header.swift in Sources */,
 				52A1F44D24B6238700382B0F /* Models.swift in Sources */,
 				52A1F45924B8C47D00382B0F /* MyAccountViewController.swift in Sources */,
+				8613C64A24B8CB7200728907 /* CreateAddressViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +434,7 @@
 			baseConfigurationReference = D0A9FF4A4C56D7A9B9A86DB2 /* Pods-git_project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = git_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -421,6 +443,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "git.git-project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -431,6 +454,7 @@
 			baseConfigurationReference = 7D6BE807A0777B602114CF0C /* Pods-git_project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = git_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create Address View Controller-->
+        <scene sceneID="ZmJ-Ln-yXr">
+            <objects>
+                <viewController storyboardIdentifier="CreateAddressViewController" id="65G-fv-zba" customClass="CreateAddressViewController" customModule="git_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dbu-eG-jjx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gv-uY-3ZV">
+                                <rect key="frame" x="20" y="56" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qIC-5K-7Tu">
+                                <rect key="frame" x="20" y="98" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ua-Pn-COi">
+                                <rect key="frame" x="20" y="140" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRn-pG-VyR">
+                                <rect key="frame" x="20" y="228" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kyo-jP-8j0">
+                                <rect key="frame" x="20" y="270" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHz-E5-UZD">
+                                <rect key="frame" x="190" y="334" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveBtnAction:" destination="65G-fv-zba" eventType="touchUpInside" id="Ssg-0n-i4F"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rbF-vC-60T">
+                                <rect key="frame" x="20" y="182" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6gv-uY-3ZV" firstAttribute="leading" secondItem="qIv-UU-N6P" secondAttribute="leading" constant="20" id="07l-W5-DTZ"/>
+                            <constraint firstItem="1ua-Pn-COi" firstAttribute="top" secondItem="qIC-5K-7Tu" secondAttribute="bottom" constant="8" id="1Mz-OQ-6bS"/>
+                            <constraint firstItem="qIC-5K-7Tu" firstAttribute="trailing" secondItem="6gv-uY-3ZV" secondAttribute="trailing" id="34j-TN-pGy"/>
+                            <constraint firstItem="1ua-Pn-COi" firstAttribute="leading" secondItem="qIC-5K-7Tu" secondAttribute="leading" id="4jL-aU-Z1M"/>
+                            <constraint firstItem="rbF-vC-60T" firstAttribute="leading" secondItem="1ua-Pn-COi" secondAttribute="leading" id="8fF-eT-bUY"/>
+                            <constraint firstItem="BRn-pG-VyR" firstAttribute="trailing" secondItem="rbF-vC-60T" secondAttribute="trailing" id="J0a-3u-w0l"/>
+                            <constraint firstItem="rbF-vC-60T" firstAttribute="trailing" secondItem="1ua-Pn-COi" secondAttribute="trailing" id="PwM-Ap-fwg"/>
+                            <constraint firstItem="qIC-5K-7Tu" firstAttribute="top" secondItem="6gv-uY-3ZV" secondAttribute="bottom" constant="8" id="Q8J-LF-wp8"/>
+                            <constraint firstItem="Kyo-jP-8j0" firstAttribute="trailing" secondItem="BRn-pG-VyR" secondAttribute="trailing" id="QTa-lY-1yy"/>
+                            <constraint firstItem="qIv-UU-N6P" firstAttribute="trailing" secondItem="6gv-uY-3ZV" secondAttribute="trailing" constant="20" id="Riq-Bx-Ad7"/>
+                            <constraint firstItem="qIC-5K-7Tu" firstAttribute="leading" secondItem="6gv-uY-3ZV" secondAttribute="leading" id="WQW-od-EP8"/>
+                            <constraint firstItem="rbF-vC-60T" firstAttribute="top" secondItem="1ua-Pn-COi" secondAttribute="bottom" constant="8" id="WiB-K0-Nfe"/>
+                            <constraint firstItem="BRn-pG-VyR" firstAttribute="leading" secondItem="rbF-vC-60T" secondAttribute="leading" id="drM-5L-3hl"/>
+                            <constraint firstItem="1ua-Pn-COi" firstAttribute="trailing" secondItem="qIC-5K-7Tu" secondAttribute="trailing" id="mEl-Wm-AIx"/>
+                            <constraint firstItem="Kyo-jP-8j0" firstAttribute="top" secondItem="BRn-pG-VyR" secondAttribute="bottom" constant="8" id="oFc-pm-oKu"/>
+                            <constraint firstItem="6gv-uY-3ZV" firstAttribute="top" secondItem="qIv-UU-N6P" secondAttribute="top" constant="12" id="q5q-WG-aS3"/>
+                            <constraint firstItem="hHz-E5-UZD" firstAttribute="centerX" secondItem="Kyo-jP-8j0" secondAttribute="centerX" id="qfe-GC-YyH"/>
+                            <constraint firstItem="BRn-pG-VyR" firstAttribute="top" secondItem="rbF-vC-60T" secondAttribute="bottom" constant="12" id="vdy-7J-Bsp"/>
+                            <constraint firstItem="Kyo-jP-8j0" firstAttribute="leading" secondItem="BRn-pG-VyR" secondAttribute="leading" id="z4H-dt-jeG"/>
+                            <constraint firstItem="hHz-E5-UZD" firstAttribute="top" secondItem="Kyo-jP-8j0" secondAttribute="bottom" constant="30" id="zU9-ic-PNP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qIv-UU-N6P"/>
+                    </view>
+                    <connections>
+                        <outlet property="appartmentTF" destination="rbF-vC-60T" id="XMv-Gx-TmO"/>
+                        <outlet property="buildingTF" destination="1ua-Pn-COi" id="Idp-0U-D7x"/>
+                        <outlet property="cityTF" destination="6gv-uY-3ZV" id="IYt-Xg-qEP"/>
+                        <outlet property="commentTF" destination="Kyo-jP-8j0" id="sks-jz-D4U"/>
+                        <outlet property="phoneNumberTF" destination="BRn-pG-VyR" id="dTC-V9-Tqf"/>
+                        <outlet property="saveBtn" destination="hHz-E5-UZD" id="N0M-ch-pJj"/>
+                        <outlet property="streetTF" destination="qIC-5K-7Tu" id="AmD-Mc-Ez5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="583-HP-GR9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28" y="62"/>
+        </scene>
+    </scenes>
+</document>
