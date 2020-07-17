@@ -10,6 +10,7 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
+    @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var valueLbl: UILabel!
     @IBOutlet weak var apartmentlbl: UILabel!

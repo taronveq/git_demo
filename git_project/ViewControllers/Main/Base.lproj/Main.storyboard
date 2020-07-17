@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bBv-9B-ycX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bBv-9B-ycX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -62,6 +62,9 @@
                                                     <state key="normal" title="edit " image="square.and.pencil" catalog="system">
                                                         <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="favoriteBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="phq-y1-Sq5"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -87,6 +90,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="apartmentlbl" destination="sY0-4N-1re" id="Ge3-Yf-z2y"/>
+                                            <outlet property="editBtn" destination="7sq-Lm-Ha4" id="uMM-PU-JwF"/>
                                             <outlet property="phonelbl" destination="0mf-a5-btS" id="4Hn-Za-fdQ"/>
                                             <outlet property="streetlbl" destination="zJY-6Q-4pz" id="gKa-kC-gBs"/>
                                             <outlet property="titleLbl" destination="YIv-rp-VDQ" id="0vc-M8-Jtg"/>

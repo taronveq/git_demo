@@ -20,6 +20,12 @@ class ViewController: UIViewController {
     let getBrandEndPoint = "Brand/GetBrand"
     let getTrendingBrandEndPoint = "Brand/GetTrendingBrand"
     let getCountriesEndPoint = "Country/GetAll"
+    
+    let getInterestedEndPoint = "Product/GetInterested"
+    
+    let addToFavoriteEndPoint = "Favorites/AddToFavorite"
+    let getFavoritesEndPoint = "Favorites/GetFavoriteProducts"
+    let deleteFavoriteEndPoint = "Favorites/RemoveFromFavorite"
 
     
     var array = [ReciepeModel]()
@@ -40,6 +46,10 @@ class ViewController: UIViewController {
     
     var countries = [List]()
     
+    var products = [ProductList]()
+    
+    var favorites = [FavoriteProductModel]()
+    
 
     @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
@@ -55,6 +65,8 @@ class ViewController: UIViewController {
         getBrand()
         getTrendingBrand()
         getCountriesWithSearch()
+        getAllFavorites()
+        getInterestedProducts()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addTapped))
     }
@@ -68,6 +80,37 @@ class ViewController: UIViewController {
         let vc = UIStoryboard(name: "CreateAddress", bundle: nil).instantiateViewController(identifier: "CreateAddressViewController") as! CreateAddressViewController
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func addToFavorite(id: String) {
+        APIClientService.makeRequest(urlEndPoint: addToFavoriteEndPoint + "?id=" + id, method: .post) { (resp: Bool) in
+            if resp {
+                self.getAllFavorites()
+            }
+        }
+    }
+    
+    func getAllFavorites() {
+        APIClientService.makeRequest(urlEndPoint: getFavoritesEndPoint) { (resp: [FavoriteProductModel]) in
+            self.favorites = resp
+            self.table.reloadData()
+        }
+    }
+    
+    func deleteFavorite(id: String) {
+        APIClientService.makeRequest(urlEndPoint: deleteFavoriteEndPoint + "?id=" + id, method: .delete) { (resp: Bool) in
+            if resp {
+                self.getAllFavorites()
+            }
+        }
+    }
+    
+    func getInterestedProducts() {
+        let dict = ["page": 1, "count": 10]
+        APIClientService.makeRequest(urlEndPoint: getInterestedEndPoint, method: .post, params: dict) { (resp: Products) in
+            self.products = resp.list
+            self.table.reloadData()
+        }
     }
     
     func getAllAddresses() {
@@ -135,15 +178,23 @@ class ViewController: UIViewController {
         }
         
     }
+    @IBAction func favoriteBtnAction(_ sender: UIButton) {
+        
+        let id = products[sender.tag].id
+        for value in favorites {
+            if value.id == id {
+                deleteFavorite(id: String(id))
+                return
+            }
+        }
+        addToFavorite(id: String(id))
+    }
 }
 
 extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 9
+        return 11
     }
-    
-    
-    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
@@ -164,16 +215,16 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
             return stores.count
         } else if section == 6 {
             return 0//brands.count
-        } else if section == 7{
+        } else if section == 7 {
             return trendingBrands.count
-        } else {
+        } else if section == 8 {
             return 0//countries.count
+        } else if section == 9 {
+            return products.count
+        } else {
+            return favorites.count
         }
     }
-    
-    
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
@@ -202,9 +253,16 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 7 {
             cell.titleLbl.text = String(brands[indexPath.row].id)
             cell.valueLbl.text = String(brands[indexPath.row].name)
-        } else {
+        } else if indexPath.section == 8 {
             cell.titleLbl.text = String(brands[indexPath.row].id)
             cell.valueLbl.text = String(brands[indexPath.row].name)
+        } else if indexPath.section == 9 {
+            cell.titleLbl.text = products[indexPath.row].name
+            cell.valueLbl.text = String(products[indexPath.row].price)
+            cell.editBtn.tag = indexPath.row
+        } else {
+            cell.titleLbl.text = favorites[indexPath.row].name
+            cell.valueLbl.text = String(favorites[indexPath.row].price)
         }
         
         return cell

@@ -162,6 +162,28 @@ struct List: Codable {
     let id, name, code: String
 }
 
+struct FavoriteProductModel: Codable {
+    let id: Int
+    let name: String
+    let price, discountedPrice, unitOfMeasureValue, unitOfMeasure: Int
+    let photo: String
+}
+
+struct Products: Codable {
+    let list: [ProductList]
+    let pageCount, itemCount: Int
+    let dateFrom: String?
+}
+
+// MARK: - List
+struct ProductList: Codable {
+    let id: Int
+    let name: String
+    let photo: String
+    let price, discountedPrice, unitOfMeasure, unitOfMeasureValue: Int
+    let isFavorite, isKilogram: Bool
+    let minimumWeight, weightStep: Int?
+}
 
 extension Encodable {
   var dictionary: [String: Any]? {
